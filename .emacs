@@ -14,6 +14,22 @@
 ;; display the path to the file in the sidebar.
 ;;(require 'uniquify)
 
+;; Using ctags
+(setq path-to-ctags "/opt/local/bin/ctags") ;; <- your ctags path here
+(defun create-tags (dir-name)
+   "Create tags file."
+   (interactive "DDirectory: ")
+   (shell-command
+      (format "ctags -f %s -e -R %s" path-to-ctags (directory-file-name dir-name)))
+)
+
+;; Using etags
+(setq tags-file-name "/home/exe/cryptosmart/cryptosmart/TAGS")
+
+;; Show full path of files
+(setq frame-title-format
+   (list (format "%s %%S: %%j " (system-name))
+   '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;;
 ;; KEYBOARD SHORTCUT
@@ -128,7 +144,6 @@
  '(comint-completion-recexact t)
  '(compilation-always-kill t)
  '(compilation-auto-jump-to-first-error nil)
- '(compilation-environment PATH=/home/griffon/trunk/indus/bin:/home/fox/components/gnutools/ecos-3\.0/arm-eabi/bin:/home/fox/components/ecos-3\.0/tools/bin:/home/avrdev/bin:/home/thomas/mes_fonctions:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin)
  '(compilation-scroll-output (quote first-error))
  '(compile-command "./makemake 5010 clean && ./makemake 5010 all -j 8 && ./makemake 5010 program")
  '(completion-show-help t)
@@ -138,7 +153,7 @@
  '(doc-view-image-width 850)
  '(doc-view-resolution 200)
  '(dynamic-completion-mode t)
- '(grep-command "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,list,o,elf,xml,json,sta,map,deps,d,a,so,sx,hex,doc,txt,pdf,tex} -iInHr \"")
+ '(grep-command "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,list,o,elf,xml,json,sta,map,deps,a,so,d,sx,hex,doc,txt,pdf,tex} -iInHr \"")
  '(gud-gdb-command-name "arm-eabi-gdb -i=mi main.elf")
  '(initial-scratch-message ";; This buffer is for notes you don't want to save, and for Lisp evaluation.
 ;; If you want to create a file, visit that file with C-x C-f,
