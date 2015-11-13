@@ -87,6 +87,12 @@ M-g M-g，再输入数字 ： 跳转到文本的第几行
 C-x 0 ： 关闭当前缓冲区
 
 C-x C-c ： 退出Emacs
- 
- 
- 
+
+## Etags用法：
+
+rm -f TAGS
+find . -name "*.cc" -print -or -name "*.h" -print -or -name "*.java" -print | xargs etags -a
+
+M-. 跳至定义处
+M-* 跳回
+C-u M-. 查找下一个tags
