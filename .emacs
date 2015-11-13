@@ -138,7 +138,7 @@
  '(doc-view-image-width 850)
  '(doc-view-resolution 200)
  '(dynamic-completion-mode t)
- '(grep-command "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,list,o,elf,xml,json,sta,map,deps,d,sx,hex,doc,txt,pdf,tex} -inHr \"")
+ '(grep-command "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,list,o,elf,xml,json,sta,map,deps,d,a,so,sx,hex,doc,txt,pdf,tex} -iInHr \"")
  '(gud-gdb-command-name "arm-eabi-gdb -i=mi main.elf")
  '(initial-scratch-message ";; This buffer is for notes you don't want to save, and for Lisp evaluation.
 ;; If you want to create a file, visit that file with C-x C-f,
