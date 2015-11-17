@@ -23,13 +23,14 @@
       (format "ctags -f %s -e -R %s" path-to-ctags (directory-file-name dir-name)))
 )
 
-;; Using etags
-(setq tags-file-name "/home/exe/cryptosmart/cryptosmart/TAGS")
-
 ;; Show full path of files
 (setq frame-title-format
    (list (format "%s %%S: %%j " (system-name))
    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-tty-dark)
 
 ;;
 ;; KEYBOARD SHORTCUT
@@ -46,7 +47,7 @@
 (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 
 ;; Company mode in all buffers
-(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key "\M-s" 'new-shell)
 (global-set-key (kbd "C-x t") 'todo-show)
@@ -137,6 +138,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(c-block-comment-prefix "//")
  '(case-fold-search nil)
  '(column-number-mode t)
@@ -145,22 +148,30 @@
  '(compilation-always-kill t)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output (quote first-error))
- '(compile-command "./makemake 5010 clean && ./makemake 5010 all -j 8 && ./makemake 5010 program")
+ '(compile-command
+   "./makemake 5010 clean && ./makemake 5010 all -j 8 && ./makemake 5010 program")
  '(completion-show-help t)
+ '(custom-enabled-themes nil)
  '(dabbrev-case-distinction t)
  '(dabbrev-case-replace t)
  '(doc-view-continuous t)
  '(doc-view-image-width 850)
  '(doc-view-resolution 200)
  '(dynamic-completion-mode t)
- '(grep-command "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,log,list,o,elf,xml,json,sta,map,deps,a,so,d,sx,hex,doc,txt,pdf,tex} -iInHr \"")
+ '(grep-command
+   "grep --exclude-dir=.svn --exclude=\\TAGS --exclude=\\*.{lst,lss,sym,log,list,o,elf,xml,json,sta,map,deps,a,so,d,sx,hex,doc,txt,pdf,tex} -iInHr \"")
  '(gud-gdb-command-name "arm-eabi-gdb -i=mi main.elf")
- '(initial-scratch-message ";; This buffer is for notes you don't want to save, and for Lisp evaluation.
+ '(initial-scratch-message
+   ";; This buffer is for notes you don't want to save, and for Lisp evaluation.
 ;; If you want to create a file, visit that file with C-x C-f,
 ;; then enter the text in that file's own buffer.
 ;; M-s: Open a new shell
 ")
- '(safe-local-variable-values (quote ((todo-categories "Todo") (todo-categories "barracuda" "alligator" "Todo") (todo-categories "alligator" "Todo"))))
+ '(safe-local-variable-values
+   (quote
+    ((todo-categories "Todo")
+     (todo-categories "barracuda" "alligator" "Todo")
+     (todo-categories "alligator" "Todo"))))
  '(send-mail-function (quote mailclient-send-it))
  '(svn-status-hide-unknown t)
  '(svn-status-hide-unmodified t))
@@ -209,23 +220,23 @@
 ;;  (local-set-key (kbd "RET") 'newline-and-indent))
 ;;(add-hook 'lisp-mode-hook 'set-newline-and-indent)
 
-;;
-;; COLORS
-;; 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 135 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(compilation-warning ((t (:inherit warning))))
- '(font-lock-comment-face ((t (:foreground "darkorange4"))))
- '(font-lock-function-name-face ((t (:foreground "navy"))))
- '(font-lock-keyword-face ((t (:foreground "red4"))))
- '(font-lock-type-face ((t (:foreground "black"))))
- '(linum ((t (:inherit shadow :background "gray95"))))
- '(mode-line ((t (nil nil nil nil :background "grey90" (:line-width -1 :color nil :style released-button) "black" :box nil :width condensed :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(svn-status-directory-face ((t (:foreground "tomato")))))
+;;;;
+;;;; COLORS
+;;;; 
+;;(custom-set-faces
+;; ;; custom-set-faces was added by Custom.
+;; ;; If you edit it by hand, you could mess it up, so be careful.
+;; ;; Your init file should contain only one such instance.
+;; ;; If there is more than one, they won't work right.
+;; '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 135 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+;; '(compilation-warning ((t (:inherit warning))))
+;; '(font-lock-comment-face ((t (:foreground "darkorange4"))))
+;; '(font-lock-function-name-face ((t (:foreground "navy"))))
+;; '(font-lock-keyword-face ((t (:foreground "red4"))))
+;; '(font-lock-type-face ((t (:foreground "black"))))
+;; '(linum ((t (:inherit shadow :background "gray95"))))
+;; '(mode-line ((t (nil nil nil nil :background "grey90" (:line-width -1 :color nil :style released-button) "black" :box nil :width condensed :foundry "unknown" :family "DejaVu Sans Mono"))))
+;; '(svn-status-directory-face ((t (:foreground "tomato")))))
 
 
 ;; sort of fullscreen
