@@ -103,3 +103,12 @@ M-* 跳回
 C-u M-. 查找下一个tags
 
 M-TAB 自动补齐函数名
+
+
+**使用Shell时显示**
+
+"terminal is not fully functional"
+
+修正：
+
+```git config --global core.pager ""```
