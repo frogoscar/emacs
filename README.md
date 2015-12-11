@@ -112,3 +112,7 @@ M-TAB 自动补齐函数名
 修正：
 
 ```git config --global core.pager ""```
+
+改回原来：
+
+```git config --global core.pager 'less -+F'```
